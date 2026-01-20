@@ -48,3 +48,32 @@
 - [ ] Multiple grid floors connected via stair tiles
 - [ ] Teleportation tiles with a single destination
 - [ ] Algorithm aware of teleport/stair tiles during pathfinding
+
+## Extension 1 — Diagonal (A*) movement
+### Step 1 — Create the new pathfinder class
+- [ ] Add a new class that implements `IPathfinder`
+- [ ] Name it to indicate diagonal A* (e.g., `AStarPathfinder`)
+
+### Step 2 — Add diagonal neighbors
+- [ ] Define 8-direction neighbor offsets (N, S, E, W, NW, NE, SW, SE)
+- [ ] Keep existing grid bounds and walkability checks
+
+### Step 3 — Apply movement costs
+- [ ] Use cost = 1 for orthogonal moves
+- [ ] Use cost = 1.4142 for diagonal moves
+
+### Step 4 — Update heuristic
+- [ ] Implement Octile heuristic in the new pathfinder
+
+### Step 5 — Prevent corner-cutting
+- [ ] For a diagonal move, require both adjacent orthogonal tiles to be walkable
+
+### Step 6 — Add algorithm switch button
+- [ ] Add an input action (key or on-screen button) to cycle pathfinding algorithms
+- [ ] Track the active `IPathfinder` in game state
+- [ ] Update the on-screen legend to show the active algorithm
+
+### Step 7 — Wire up and verify
+- [ ] Use the active `IPathfinder` selected by the switch in the game loop
+- [ ] Ensure the switch cycles between existing A4 and A*
+- [ ] Confirm paths use diagonals when optimal
